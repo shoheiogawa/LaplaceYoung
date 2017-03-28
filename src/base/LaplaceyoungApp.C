@@ -1,0 +1,50 @@
+#include "LaplaceyoungApp.h"
+#include "Moose.h"
+#include "AppFactory.h"
+#include "ModulesApp.h"
+#include "MooseSyntax.h"
+
+template<>
+InputParameters validParams<LaplaceyoungApp>()
+{
+  InputParameters params = validParams<MooseApp>();
+  return params;
+}
+
+LaplaceyoungApp::LaplaceyoungApp(InputParameters parameters) :
+    MooseApp(parameters)
+{
+  Moose::registerObjects(_factory);
+  ModulesApp::registerObjects(_factory);
+  LaplaceyoungApp::registerObjects(_factory);
+
+  Moose::associateSyntax(_syntax, _action_factory);
+  ModulesApp::associateSyntax(_syntax, _action_factory);
+  LaplaceyoungApp::associateSyntax(_syntax, _action_factory);
+}
+
+LaplaceyoungApp::~LaplaceyoungApp()
+{
+}
+
+// External entry point for dynamic application loading
+extern "C" void LaplaceyoungApp__registerApps() { LaplaceyoungApp::registerApps(); }
+void
+LaplaceyoungApp::registerApps()
+{
+  registerApp(LaplaceyoungApp);
+}
+
+// External entry point for dynamic object registration
+extern "C" void LaplaceyoungApp__registerObjects(Factory & factory) { LaplaceyoungApp::registerObjects(factory); }
+void
+LaplaceyoungApp::registerObjects(Factory & factory)
+{
+}
+
+// External entry point for dynamic syntax association
+extern "C" void LaplaceyoungApp__associateSyntax(Syntax & syntax, ActionFactory & action_factory) { LaplaceyoungApp::associateSyntax(syntax, action_factory); }
+void
+LaplaceyoungApp::associateSyntax(Syntax & /*syntax*/, ActionFactory & /*action_factory*/)
+{
+}
