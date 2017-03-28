@@ -3,16 +3,16 @@
 
 #include "MooseApp.h"
 
-class LaplaceyoungApp;
+class LaplaceYoungApp;
 
 template<>
-InputParameters validParams<LaplaceyoungApp>();
+InputParameters validParams<LaplaceYoungApp>();
 
-class LaplaceyoungApp : public MooseApp
+class LaplaceYoungApp : public MooseApp
 {
 public:
-  LaplaceyoungApp(InputParameters parameters);
-  virtual ~LaplaceyoungApp();
+  LaplaceYoungApp(InputParameters parameters);
+  virtual ~LaplaceYoungApp();
 
   static void registerApps();
   static void registerObjects(Factory & factory);

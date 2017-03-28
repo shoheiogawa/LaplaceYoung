@@ -1,47 +1,47 @@
-#include "LaplaceyoungApp.h"
+#include "LaplaceYoungApp.h"
 #include "Moose.h"
 #include "AppFactory.h"
 #include "MooseSyntax.h"
 
 template<>
-InputParameters validParams<LaplaceyoungApp>()
+InputParameters validParams<LaplaceYoungApp>()
 {
   InputParameters params = validParams<MooseApp>();
   return params;
 }
 
-LaplaceyoungApp::LaplaceyoungApp(InputParameters parameters) :
+LaplaceYoungApp::LaplaceYoungApp(InputParameters parameters) :
     MooseApp(parameters)
 {
   Moose::registerObjects(_factory);
-  LaplaceyoungApp::registerObjects(_factory);
+  LaplaceYoungApp::registerObjects(_factory);
 
   Moose::associateSyntax(_syntax, _action_factory);
-  LaplaceyoungApp::associateSyntax(_syntax, _action_factory);
+  LaplaceYoungApp::associateSyntax(_syntax, _action_factory);
 }
 
-LaplaceyoungApp::~LaplaceyoungApp()
+LaplaceYoungApp::~LaplaceYoungApp()
 {
 }
 
 // External entry point for dynamic application loading
-extern "C" void LaplaceyoungApp__registerApps() { LaplaceyoungApp::registerApps(); }
+extern "C" void LaplaceYoungApp__registerApps() { LaplaceYoungApp::registerApps(); }
 void
-LaplaceyoungApp::registerApps()
+LaplaceYoungApp::registerApps()
 {
-  registerApp(LaplaceyoungApp);
+  registerApp(LaplaceYoungApp);
 }
 
 // External entry point for dynamic object registration
-extern "C" void LaplaceyoungApp__registerObjects(Factory & factory) { LaplaceyoungApp::registerObjects(factory); }
+extern "C" void LaplaceYoungApp__registerObjects(Factory & factory) { LaplaceYoungApp::registerObjects(factory); }
 void
-LaplaceyoungApp::registerObjects(Factory & /*factory*/)
+LaplaceYoungApp::registerObjects(Factory & /*factory*/)
 {
 }
 
 // External entry point for dynamic syntax association
-extern "C" void LaplaceyoungApp__associateSyntax(Syntax & syntax, ActionFactory & action_factory) { LaplaceyoungApp::associateSyntax(syntax, action_factory); }
+extern "C" void LaplaceYoungApp__associateSyntax(Syntax & syntax, ActionFactory & action_factory) { LaplaceYoungApp::associateSyntax(syntax, action_factory); }
 void
-LaplaceyoungApp::associateSyntax(Syntax & /*syntax*/, ActionFactory & /*action_factory*/)
+LaplaceYoungApp::associateSyntax(Syntax & /*syntax*/, ActionFactory & /*action_factory*/)
 {
 }
