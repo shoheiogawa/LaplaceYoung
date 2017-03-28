@@ -1,4 +1,4 @@
-Laplaceyoung
+LaplaceYoung
 =====
 
 "Fork LaplaceYoung" to create a new MOOSE-based application.
