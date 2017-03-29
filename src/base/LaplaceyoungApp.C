@@ -4,6 +4,8 @@
 #include "ModulesApp.h"
 #include "MooseSyntax.h"
 
+#include "SturmLiouville.h"
+
 template<>
 InputParameters validParams<LaplaceYoungApp>()
 {
