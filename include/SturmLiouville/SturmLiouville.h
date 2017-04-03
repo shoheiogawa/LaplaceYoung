@@ -1,6 +1,8 @@
 #ifndef SturmLiouville_H
 #define SturmLiouville_H
 
+#include "Diffusion.h"
+
 class SturmLiouville;
 
 template<>
@@ -22,9 +24,9 @@ protected:
 
     virtual Real evaluateSpectralParameter();
 
-    Real _boundary_value;
     Real _spectral_parameter;
 
 };
 
 #endif // SturmLiouville_H
+

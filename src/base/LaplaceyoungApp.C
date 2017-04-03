@@ -42,6 +42,7 @@ extern "C" void LaplaceYoungApp__registerObjects(Factory & factory) { LaplaceYou
 void
 LaplaceYoungApp::registerObjects(Factory & factory)
 {
+  registerKernel(SturmLiouville);
 }
 
 // External entry point for dynamic syntax association

@@ -1,10 +1,11 @@
 [Mesh]
   type = GeneratedMesh
   dim = 2
-  nx = 100
-  ny = 100
+  nx = 30
+  ny = 30
   xmax = 1.0 # lx
   ymax = 1.0 # ly
+  elem_type = TRI3
 []
 
 [Variables]
@@ -15,19 +16,31 @@
 []
 
 [Kernels]
-  [./younglaplace_u]
-    type = YoungLaplace 
+  [./LY]
+    type = SturmLiouville
     variable = u
-    flux_value = 0.2
+    flux_value = 0.0
     spectral_parameter = 1.0
+  [../]
+[]
+
+[BCs]
+  [./border_flux]
+    type = NeumannBC
+    variable = u
+    boundary = '0 1 2 3'
+    value = 0.2
   [../]
 []
 
 [Executioner]
   type = Steady
-  solve_type = PJFNK
+  petsc_options_iname = '-pc_type -pc_hypre_type'
+  petsc_options_value = 'hypre boomeramg'
+  line_search = basic
 []
 
 [Outputs]
   exodus = true
 []
+
