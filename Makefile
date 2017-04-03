@@ -13,6 +13,8 @@ ifneq ($(wildcard $(MOOSE_SUBMODULE)/framework/Makefile),)
 else
   MOOSE_DIR        ?= $(shell dirname `pwd`)/moose
 endif
+#MOOSE_SUBMODULE  := $(CURDIR)/moose
+#MOOSE_DIR        := $(HOME)/moose
 
 # framework
 FRAMEWORK_DIR      := $(MOOSE_DIR)/framework
@@ -20,7 +22,7 @@ include $(FRAMEWORK_DIR)/build.mk
 include $(FRAMEWORK_DIR)/moose.mk
 
 ################################## MODULES ####################################
-ALL_MODULES := yes
+ALL_MODULES := no 
 include $(MOOSE_DIR)/modules/modules.mk
 ###############################################################################
 
